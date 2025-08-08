@@ -49,9 +49,7 @@ date: 2025-08-08 10:00:00 +0900
 
 यहाँ नयाँ इन्टरफेसको एक झलक छ, जसले यसको सफा डिजाइन र विस्तृत पञ्चाङ्ग जानकारी प्यानललाई देखाउँछ।
 
-![Bikram Calendar application showing the monthly view and detailed Panchanga information for a selected day.](https://github.com/user-attachments/assets/ce2bec13-de65-48a1-b69c-de2e60f88368)
-
-## प्राविधिक उत्साहीहरूका लागि: आफैं बनाउनुहोस्!
+![Bikram Calendar application showing the monthly view and detailed Panchanga information for a selected day.](../assets/img/posts/post_calendar2.png) 
 
 एक खुला स्रोत (open-source) परियोजना भएकोले, तपाईंसँग यसलाई स्रोतबाटै निर्माण गर्ने पूर्ण स्वतन्त्रता छ। रिपोजिटरीमा Debian/Ubuntu र Arch Linux का लागि विस्तृत निर्देशनहरू छन्। तपाईं कम्पाइल गर्न Qt Creator, qmake, वा CMake प्रयोग गर्न सक्नुहुन्छ।
 
