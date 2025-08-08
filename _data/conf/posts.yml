@@ -8,10 +8,10 @@
 #                Table of contents
 ###########################################################
 # to enable Table of contents in posts.
-post_table_of_contents: true
+#post_table_of_contents: true
 
 # this adds tooltip to Table of contents
-post_table_of_contents_tooltip: true
+#post_table_of_contents_tooltip: true
 
 ######################### Post-list #######################
 
