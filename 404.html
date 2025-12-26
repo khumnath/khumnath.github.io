@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found</title>
+  <script>
+    // Single Page App (SPA) 404 redirect
+    // Store the attempted path and redirect to index.html
+    // React Router will then handle showing the 404 page
+    sessionStorage.setItem('redirectPath', window.location.pathname + window.location.search);
+    window.location.replace('/');
+  </script>
+</head>
+
+<body>
+  <p>Redirecting...</p>
+</body>
+
+</html>
