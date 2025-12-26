@@ -1,0 +1,72 @@
+---
+lng_pair: id_08-08-2025
+title: Introducing the All-New Bikram Calendar, Reimagined with Qt 6 and Detailed Panchanga!
+author: khumnath
+category: others
+tags: [ bikram sambat, calendar, Qt6, QML, blog ]
+img: ":post_calendar.png"
+date: 2025-08-08 10:00:00 +0900
+#remove '#' on published: false to unpublish post
+#published: false
+#markdown formated page contents below
+---
+
+Hello everyone,
+
+Many of you might remember the C++ Bikram Calendar application I released last year. It was a project born out of a desire for a simple, native desktop calendar for Bikram Sambat. I was thrilled by the response and feedback from some of my friends and users. That support inspired me to take it to the next level.
+
+Today, I’m incredibly excited to announce a complete overhaul of the project. This isn't just an update; it's a brand-new application, rebuilt from the ground up with the modern Qt 6 and QML framework. Welcome to the new Bikram Calendar!
+
+## What’s New? A Modern Leap Forward
+
+This new version is all about providing a richer, more flexible, and more detailed experience. I’ve focused on three key areas: modern technology, deeper cultural information, and user customization.
+
+### 1. A Modern Makeover with Qt 6 & QML
+
+The biggest change is the move to Qt 6. By leveraging QML, the application now boasts a more fluid, responsive, and visually appealing user interface. The backend remains powerful and efficient, with native C++ handling system tasks and Javascript for calculation logic, giving you the best of both worlds. It’s faster, sleeker, and ready for modern desktops.
+
+### 2. Deeper into the Panchanga (पञ्चाङ्ग)
+
+One of the most requested features was more detailed astrological and traditional information. I’m happy to say, it’s here! The calendar now provides comprehensive Panchanga details.
+
+- The main calendar view shows the daily Tithi (तिथि) at a glance.
+- Clicking on any day reveals a detailed panel with the Tithi, Nakshatra (नक्षत्र), Yoga (योग), and Karana (करण).
+
+This has been a significant effort, using a hybrid calculation system for accuracy. For dates between 2000 BS to 2089 BS, the app uses pre-computed data to ensure precision. For dates outside this range, it dynamically calculates them based on the traditional Surya Siddanta (सूर्य सिद्धान्त) logic.
+
+> **Note on Accuracy:**
+> The Surya Siddanta is an observational system, so calculated times can vary slightly from other sources. For official ceremonies, please always cross-reference with a calendar approved by the Nepal Panchanga Nirnayak Samiti (नेपाल पञ्चाङ्ग निर्णायक समिति).
+
+### 3. Enhanced Customization and User Experience
+
+A good desktop app should feel like it’s yours. The new Bikram Calendar now includes:
+
+- **Light & Dark Themes:** Easily switch between themes with a single click. The app remembers your choice.
+- **Font Customization:** Right-click the desktop widget to adjust font sizes and colors to your liking.
+- **State Persistence:** The app conveniently remembers the position and size of its windows, so you can set it up just the way you like it.
+
+## A Glimpse of the New Bikram Calendar in Action
+
+Here's a look at the new interface, showcasing its clean design and the detailed Panchanga information panel.
+
+![Bikram Calendar application showing the monthly view and detailed Panchanga information for a selected day.](../assets/img/posts/post_calendar2.png) 
+
+## For the Tech Enthusiasts: Build It Yourself!
+
+As an open-source project, you have full freedom to build it from the source. The repository contains detailed instructions for Debian/Ubuntu and Arch Linux. You can use Qt Creator, qmake, or CMake for compilation.
+
+I’ve also taken care to document support for the Wayland display server. Due to its security protocols, there are a couple of minor differences in behavior (like opening the calendar via the right-click menu), which are fully explained in the [README file](https://github.com/khumnath/nepdate/main/README.md).
+
+## Get Involved!
+
+This project is for the community, and contributions are always welcome. Whether you find a bug, have a feature suggestion, or want to contribute code, I encourage you to get involved.
+
+- Check out the project on GitHub: [GitHub Repository](https://github.com/khumnath/nepdate)
+- Fork the repository and create a new branch for your feature.
+- Submit a Pull Request with your changes.
+
+The project is licensed under the GNU General Public License v3.0, ensuring it will always remain free and open.
+
+Thank you once again for your support. I hope this new and improved Bikram Calendar finds a useful place on your desktop.
+
+Happy computing!

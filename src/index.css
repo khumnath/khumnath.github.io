@@ -1,0 +1,143 @@
+@import "tailwindcss";
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary: #3389de;
+  --color-primary-light: #4dabf7;
+  --color-primary-dark: #1c6ca8;
+}
+
+@layer base {
+  @font-face {
+    font-family: 'Mukta';
+    src: url('./assets/fonts/Mukta-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  body {
+    @apply bg-gray-50 text-gray-900 dark:bg-[#242424] dark:text-gray-100;
+  }
+
+  /* Apply Mukta font for Nepali language */
+  :root:lang(ne),
+  :root:lang(ne) body {
+    --font-sans: "Mukta", sans-serif;
+    font-family: "Mukta", sans-serif;
+  }
+}
+
+@layer utilities {
+
+  /* Custom Markdown Styles */
+  .markdown-body h1,
+  .markdown-body h2,
+  .markdown-body h3 {
+    @apply font-bold mt-6 mb-4 text-gray-800 dark:text-gray-200;
+  }
+
+  .markdown-body p {
+    @apply mb-4 leading-relaxed;
+  }
+
+  .markdown-body a {
+    @apply text-primary hover:text-primary-dark underline;
+  }
+
+  .markdown-body img {
+    @apply rounded-lg shadow-md max-w-full h-auto my-4;
+  }
+
+  .markdown-body ul {
+    @apply list-disc list-inside mb-4;
+  }
+
+  .markdown-body blockquote {
+    @apply border-l-4 border-primary pl-4 italic text-gray-600 dark:text-gray-400 my-4;
+  }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+  }
+}
+
+/* Global scrollbar hiding */
+html,
+body {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Google Translate Widget Overrides */
+.goog-te-gadget-simple {
+  background-color: #ffffff !important;
+  border: 1px solid #e5e7eb !important;
+  padding: 8px 12px !important;
+  border-radius: 8px !important;
+  font-size: 14px !important;
+  line-height: 20px !important;
+  display: inline-block !important;
+  cursor: pointer !important;
+}
+
+.goog-te-gadget-icon {
+  display: none !important;
+}
+
+/* Text Styling */
+.goog-te-menu-value {
+  color: #374151 !important;
+  margin: 0 !important;
+}
+
+.goog-te-menu-value span {
+  color: #374151 !important;
+  border-left: none !important;
+}
+
+/* Hide branding text by making container transparent, then restoring color for the button */
+.goog-te-gadget {
+  color: transparent !important;
+}
+
+/* Dark Mode */
+.dark .goog-te-gadget-simple {
+  background-color: #1f2937 !important;
+  border-color: #374151 !important;
+  color: #ffffff !important;
+}
+
+.dark .goog-te-menu-value,
+.dark .goog-te-menu-value span {
+  color: #ffffff !important;
+}
+
+/* Force all children to be white in dark mode just in case */
+.dark .goog-te-gadget-simple * {
+  color: #ffffff !important;
+}
+
+/* Hide Banner */
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+
+body {
+  top: 0px !important;
+}

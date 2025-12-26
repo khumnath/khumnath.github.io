@@ -1,0 +1,68 @@
+{
+  // === Editor ===
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+  "editor.formatOnSave": true,
+  "editor.minimap.enabled": false,
+  "editor.renderWhitespace": "all",
+  "editor.wordWrap": "on",
+  // === Files ===
+  "files.autoSave": "onFocusChange",
+  "files.eol": "\n",
+  "files.trimTrailingWhitespace": true,
+  // === Terminal ===
+  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.scrollback": 5000,
+  // === JSON ===
+  "json.schemaDownload.enable": true,
+  // === TypeScript/React ===
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "javascript.validate.enable": false, // Disable JS validation in favor of TS
+  "typescript.validate.enable": true,
+  // === Emmet for React/JSX ===
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "typescript": "typescriptreact"
+  },
+  "emmet.triggerExpansionOnTab": true,
+  // === Prettier / Format ===
+  "prettier.requireConfig": true,
+  "prettier.endOfLine": "lf",
+  // === Files Associations ===
+  "files.associations": {
+    "*.tsx": "typescriptreact",
+    "*.ts": "typescript"
+  },
+  // === CSS / Tailwind ===
+  "tailwindCSS.includeLanguages": {
+    "typescript": "javascript",
+    "typescriptreact": "javascript"
+  },
+  "tailwindCSS.emmetCompletions": true,
+  "tailwindCSS.experimental.classRegex": [
+    "tw`([^`]*)`",
+    "className=\"([^\"]*)\""
+  ],
+  "css.lint.unknownAtRules": "ignore",
+  // === Suggestions ===
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": true
+  },
+  "editor.suggestSelection": "first",
+  "editor.suggest.showIcons": true,
+  // === Explorer ===
+  "explorer.confirmDelete": false,
+  "explorer.openEditors.visible": 1,
+  // === Theme ===
+  "workbench.colorTheme": "Default Dark+",
+  "[javascriptreact]": {
+    "editor.autoIndentOnPaste": true
+  },
+  "[css]": {
+    "editor.suggest.insertMode": "replace"
+  },
+}
