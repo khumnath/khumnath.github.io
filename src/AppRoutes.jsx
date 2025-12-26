@@ -17,7 +17,6 @@ const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/:lang" element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/post-list" element={<Posts />} />
       <Route path="/archives" element={<Archives />} />
@@ -27,6 +26,9 @@ const AppRoutes = () => {
       <Route path="/sitemap" element={<Sitemap />} />
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       <Route path="/404" element={<NotFound />} />
+
+      {/* Dynamic Routes */}
+      <Route path="/:lang" element={<Home />} />
       <Route path="/posts/:slug" element={<PostDynamic />} />
       <Route path="/posts/:lang/:slug" element={<PostDynamic />} />
       <Route path="*" element={<NotFound />} />
