@@ -19,3 +19,9 @@ Thumbs.db
 #drafts
 _posts/draft*
 assets/img/posts/draft*
+
+node_modules/
+
+yarn.lock
+
+dist/
