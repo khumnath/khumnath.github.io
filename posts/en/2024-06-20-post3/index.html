@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en" class="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introducing the Bikram Sambat Calendar in C++ and Qt | khumnath&#039;s lab</title>
+    <meta name="description" content="Hello everyone, I&#039;m excited to share a project that I&#039;ve been working on: **NepDate**, a Nepali calendar application designed to meet the unique needs of our co..." />
+    <meta name="keywords" content="bikram sambat, calendar, c++, Qt, blog" />
+    <meta name="author" content="khumnath" />
+    <link rel="canonical" href="https://khumnath.com.np/posts/en/2024-06-20-post3" />
+    <link rel="alternate" hreflang="en" href="https://khumnath.com.np/posts/en/2024-06-20-post3" />
+    <link rel="alternate" hreflang="x-default" href="https://khumnath.com.np/posts/en/2024-06-20-post3" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://khumnath.com.np/posts/en/2024-06-20-post3" />
+    <meta property="og:title" content="Introducing the Bikram Sambat Calendar in C++ and Qt | khumnath&#039;s lab" />
+    <meta property="og:description" content="Hello everyone, I&#039;m excited to share a project that I&#039;ve been working on: **NepDate**, a Nepali calendar application designed to meet the unique needs of our co..." />
+    <meta property="og:image" content="https://khumnath.com.np/assets/img/posts/post_calendar.png" />
+    <meta property="og:site_name" content="khumnath's lab" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="article:published_time" content="2024-06-20 10:26:48 +0900" />
+    <meta property="article:author" content="khumnath" />
+    <meta property="article:tag" content="bikram sambat" />
+    <meta property="article:tag" content="calendar" />
+    <meta property="article:tag" content="c++" />
+    <meta property="article:tag" content="Qt" />
+    <meta property="article:tag" content="blog" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://khumnath.com.np/posts/en/2024-06-20-post3" />
+    <meta name="twitter:title" content="Introducing the Bikram Sambat Calendar in C++ and Qt | khumnath&#039;s lab" />
+    <meta name="twitter:description" content="Hello everyone, I&#039;m excited to share a project that I&#039;ve been working on: **NepDate**, a Nepali calendar application designed to meet the unique needs of our co..." />
+    <meta name="twitter:image" content="https://khumnath.com.np/assets/img/posts/post_calendar.png" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Introducing the Bikram Sambat Calendar in C++ and Qt",
+      "image": ["https://khumnath.com.np/assets/img/posts/post_calendar.png"],
+      "datePublished": "2024-06-20 10:26:48 +0900",
+      "dateModified": "2024-06-20 10:26:48 +0900",
+      "author": {
+        "@type": "Person",
+        "name": "khumnath",
+        "url": "https://khumnath.com.np/about"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "khumnath",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://khumnath.com.np/android-chrome-192x192.png"
+        }
+      },
+      "description": "Hello everyone, I'm excited to share a project that I've been working on: **NepDate**, a Nepali calendar application designed to meet the unique needs of our co...",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://khumnath.com.np/posts/en/2024-06-20-post3"
+      }
+    }
+    </script>
+
+  <script>
+    // Define dataLayer and the gtag function.
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+
+    // Set default consent to 'denied' as a placeholder
+    // Determine actual status from the "conf" or default
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied'
+    });
+  </script>
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-PCHZT95M');</script>
+  <!-- End Google Tag Manager -->
+  <script type="module" crossorigin src="/assets/index-BUnzyVu5.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/vendor-CJRNzzU3.js">
+  <link rel="modulepreload" crossorigin href="/assets/react-vendor-BQ0HYxHH.js">
+  <link rel="modulepreload" crossorigin href="/assets/markdown-vendor-DpadjQ_j.js">
+  <link rel="stylesheet" crossorigin href="/assets/react-vendor-DammVlxs.css">
+  <link rel="stylesheet" crossorigin href="/assets/index-BUmGdnfl.css">
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PCHZT95M" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <div id="root">
+      <main class="max-w-4xl mx-auto py-8 px-4">
+        <article class="prose dark:prose-invert max-w-none">
+          <header class="text-center py-6 border-b border-gray-100 dark:border-gray-800 mb-8">
+            <h1 class="text-3xl md:text-5xl font-extrabold text-gray-900 dark:text-white leading-tight mb-4">
+              Introducing the Bikram Sambat Calendar in C++ and Qt
+            </h1>
+            <div class="flex items-center justify-center gap-4 text-sm text-gray-500">
+              <time datetime="2024-06-20 10:26:48 +0900">June 20, 2024</time>
+              <span>By khumnath</span>
+            </div>
+          </header>
+          <div class="markdown-body">
+            <h3>NepDate: A Comprehensive Nepali Calendar Application for Windows and Linux</h3>
+<p>Hello everyone,</p>
+<p>I’m excited to share a project that I’ve been working on: <strong>NepDate</strong>, a Nepali calendar application designed to meet the unique needs of our community. You see, I was looking for a decent Nepali calendar app myself, but there just wasn’t anything out there that ticked all the boxes. None of them seemed to handle super old dates, you know, like way back in history. Plus, none of them gave any info about Tithi, those special days based on the moon that are important for planning things out.</p>
+<p>On top of that, most of the good options seemed to be for Windows only, leaving my Linux friends out in the cold. So, I decided to take matters into my own hands and build NepDate! After getting it working perfectly on Linux, I even made a Windows version so everyone could join the party.</p>
+<p><img src="/assets/img/posts/post_calendar.png" alt=""></p>
+<h4>What’s in it for you?</h4>
+<ol>
+<li>
+<p><strong>Time Travel Made Easy</strong></p>
+<ul>
+<li>Need to convert a date from, say, 1300 AD or 2600 AD to the Nepali Bikram Sambat calendar? No sweat! NepDate can handle dates way back in history, and even far into the future, for thousands of years!</li>
+</ul>
+</li>
+<li>
+<p><strong>Tithi Time!</strong></p>
+<ul>
+<li>Planning a pooja or other important event? No problem! NepDate gives you all the details about Tithi, those special days based on the moon cycle, so you can pick the most auspicious time.</li>
+</ul>
+</li>
+<li>
+<p><strong>Linux Love</strong></p>
+<ul>
+<li>My Linux fam, I haven’t forgotten you! NepDate has a cool little floating widget that sits right on your desktop, showing the current Bikram Sambat date without you even needing to open the app.</li>
+</ul>
+</li>
+<li>
+<p><strong>All Systems Go</strong></p>
+<ul>
+<li>Windows or Linux, NepDate works on pretty much any computer you’ve got.</li>
+</ul>
+</li>
+<li>
+<p><strong>Privacy Perks</strong></p>
+<ul>
+<li>No internet connection needed for this app! Everything works offline, so your data stays private and you can use it anywhere, anytime.</li>
+</ul>
+</li>
+<li>
+<p><strong>Built with C++ and Qt Framework</strong></p>
+<ul>
+<li>The application is developed using C++ and the Qt framework, providing a robust and high-performance experience.</li>
+</ul>
+</li>
+</ol>
+<h4>Current Limitations</h4>
+<p>While NepDate offers a range of features, there are still areas for improvement:</p>
+<ul>
+<li><strong>Fixed Size Interface:</strong> Currently, the application has a fixed height and width. When resizing the window, widgets do not resize accordingly. This is something I am actively working to improve in future updates.</li>
+<li><strong>Ongoing Development:</strong> As a solo developer, I am continually working to refine and enhance NepDate. User feedback is invaluable in this process, and I welcome any suggestions or contributions from the community.</li>
+</ul>
+<h4>Getting Started</h4>
+<p>Getting started with NepDate is simple:</p>
+<ol>
+<li>Visit the <a href="https://github.com/khumnath/nepdate">GitHub repository</a> and follow the instructions to install the application.</li>
+<li>Explore the various features and customize your settings.</li>
+<li>Start managing your dates with ease.</li>
+</ol>
+<h4>How You Can Help</h4>
+<p>I’d love for you to be a part of the NepDate journey! Here’s how you can jump in:</p>
+<ul>
+<li><strong>Download and Explore:</strong> Head over to <a href="https://github.com/khumnath/nepdate">GitHub</a> (it’s like a website for programmers) and search for NepDate. Download the app and see what it can do!</li>
+<li><strong>Feedback Please!</strong> Is there anything you think needs improvement? Let me know! Your thoughts are super valuable.</li>
+<li><strong>Bug Squashing Brigade:</strong> If you run into any problems while using NepDate, don’t hesitate to let me know. Together we can make this app squeaky clean!</li>
+</ul>
+<p>I’m really excited to share NepDate with the community and make managing dates a breeze for everyone. Let’s make calendaring simpler and more in touch with our culture, together!</p>
+<p>Thank you for being part of the NepDate journey.</p>
+<p>Best regards,</p>
+<p>Khumnath Nepal</p>
+
+          </div>
+        </article>
+      </main>
+    </div>
+
+</body>
+
+</html>

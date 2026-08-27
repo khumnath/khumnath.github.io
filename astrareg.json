@@ -1,0 +1,58 @@
+{
+  "updated_at": "2026-08-27T09:30:00.000Z",
+  "app": "AstraLedger POS",
+  "version": "1.2.0",
+  "vendor": "Aksharlab Studio",
+  
+  "_comment_guide": "To change the license type for a device, update the 'prefix' and 'type' fields for its Device ID in 'paid_devices'.",
+
+  "_available_license_types_reference_for_this_device": {
+    "option_1_single_lifetime": {
+      "type": "lifetime",
+      "prefix": "LT",
+      "plan": "Single Terminal Lifetime (1 Counter)",
+      "description": "Permanent unexpiring license for this single machine"
+    },
+    "option_2_multinode_5_lifetime": {
+      "type": "multi_5",
+      "prefix": "MN5",
+      "plan": "Multi-Node 5 Counters Lifetime",
+      "description": "Master Hub license allowing up to 5 concurrent cashier counters/tablets"
+    },
+    "option_3_multinode_10_lifetime": {
+      "type": "multi_10",
+      "prefix": "MN10",
+      "plan": "Multi-Node 10 Counters Lifetime",
+      "description": "Master Hub license allowing up to 10 concurrent cashier counters/tablets"
+    },
+    "option_4_multinode_unlimited_lifetime": {
+      "type": "multi_unlimited",
+      "prefix": "MNLT",
+      "plan": "Enterprise Multi-Node Lifetime (Unlimited)",
+      "description": "Master Hub license allowing unlimited satellite cashier counters"
+    },
+    "option_5_single_yearly": {
+      "type": "yearly",
+      "prefix": "Y2708",
+      "plan": "Single Terminal 1-Year Subscription (Expires Aug 2027)",
+      "description": "Annual renewal key for 1 counter. Format: Y + YY + MM (e.g. Y2708 = 2027 Aug)"
+    },
+    "option_6_multinode_yearly": {
+      "type": "multi_yearly",
+      "prefix": "MNY2708",
+      "plan": "Multi-Node 5 Counters 1-Year Subscription (Expires Aug 2027)",
+      "description": "Annual renewal key for up to 5 counters. Format: MNY + YY + MM"
+    }
+  },
+
+  "paid_devices": {
+    "ASTRA-F725-1F92-4A12": {
+      "type": "lifetime",
+      "prefix": "LT",
+      "plan": "Single Terminal Lifetime",
+      "registered_to": "Master Administrator (Primary Workstation)",
+      "status": "active",
+      "activated_at": "2026-08-27T09:30:00.000Z"
+    }
+  }
+}
