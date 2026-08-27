@@ -73,6 +73,30 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://khumnath.com.np/posts/en/2026-08-27-vedic-astronomy-nepdate-engine-research</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://khumnath.com.np/posts/en/2026-08-27-vedic-astronomy-nepdate-engine-research" />
+    <xhtml:link rel="alternate" hreflang="ne" href="https://khumnath.com.np/posts/ne/2026-08-27-vedic-astronomy-nepdate-engine-research" />
+    <image:image>
+      <image:loc>https://khumnath.com.np/assets/img/posts/post_nepdate_logo.png</image:loc>
+      <image:title>A Comparative Analysis of Vedic Ephemeris Systems: Classical Siddhantas, Empirical Bija Corrections, Modern Drik Ganita, and the Hybrid Architecture of Nepdate</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://khumnath.com.np/posts/ne/2026-08-27-vedic-astronomy-nepdate-engine-research</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://khumnath.com.np/posts/en/2026-08-27-vedic-astronomy-nepdate-engine-research" />
+    <xhtml:link rel="alternate" hreflang="ne" href="https://khumnath.com.np/posts/ne/2026-08-27-vedic-astronomy-nepdate-engine-research" />
+    <image:image>
+      <image:loc>https://khumnath.com.np/assets/img/posts/post_nepdate_logo.png</image:loc>
+      <image:title>वैदिक पञ्चाङ्ग गणना प्रणालीको तुलनात्मक अध्ययन: शास्त्रीय सिद्धान्त, बीज संस्कार, आधुनिक दृक पद्धति र नेपडेट (Nepdate) को हाइब्रिड आर्किटेक्चर</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://khumnath.com.np/posts/en/2026-08-27-post5</loc>
     <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
