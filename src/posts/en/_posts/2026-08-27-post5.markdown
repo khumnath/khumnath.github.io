@@ -1,0 +1,97 @@
+---
+lng_pair: id_27-08-2026
+title: "Introducing Nepdate for Android: Bikram Sambat Calendar with Native Widgets & Status Bar Day Icon!"
+author: khumnath
+category: others
+tags: [ nepdate, android, bikram sambat, nepali calendar, panchang, widget, mobile app, blog ]
+img: ":post_nepdate_logo.png"
+date: 2026-08-27 10:00:00 +0545
+#remove '#' on published: false to unpublish post
+#published: false
+#markdown formated page contents below
+---
+
+Hello everyone,
+
+Following the journey of the Bikram Sambat calendar from its initial C++ desktop release to Qt 6 / QML and the web, I am thrilled to announce a major milestone: **Nepdate for Android** is officially here!
+
+Nepdate is designed to be the ultimate Nepali calendar, Panchanga, and Vedic astrology companion on your mobile device. Built for speed, deep cultural accuracy, and daily convenience, it brings your essential Nepali date information right to your fingertips—and directly onto your home screen and status bar.
+
+![Nepdate Android App Calendar Interface](/assets/img/posts/post_nepdate_app.jpg)
+
+---
+
+## What Makes Nepdate for Android Special?
+
+While there are various calendar apps available, Nepdate was engineered to provide unparalleled accuracy, offline capability, customizable native widgets, and seamless status bar integration without clutter or bloat.
+
+### 1. Native Home Screen Widgets (Fully Customizable)
+Never miss today's Nepali date again. Nepdate offers customizable Android home screen widgets that keep you updated at a glance:
+- **Devanagari & English Display:** View the Bikram Sambat date (साल, महिना, गते), English Gregorian date, and current Lunar Tithi.
+- **Deep Customization:** Tailor the widget to match your phone's wallpaper and theme. You can adjust background transparency, text colors, font sizing, and element visibility.
+- **Lock Screen & Compact Variants:** Choose between detailed date cards, minimalist monochrome styles, or lock screen-friendly layouts.
+
+### 2. Sticky Notification with Dynamic Status Bar Day Icon
+One of Nepdate's most convenient features is its persistent date notification:
+- **Status Bar Day Icon:** A crisp, native day icon (1–32) sits in your Android status bar, allowing you to see today's Nepali date instantly without unlocking your phone or pulling down the notification shade.
+- **Rich Notification Card:** Expanding the notification reveals the current time of day (बिहान, दिउँसो, बेलुका, राती), Bikram Sambat date, Lunar Tithi & Paksha, Gregorian date, and active timezone.
+- **Location-Based Time & Smart Timezone Indicator:** Users can select their preferred location and timezone in the app, and the notification calculates time and dates accordingly. If your device's system timezone differs from your selected location in the app, the notification automatically displays the timezone tag (such as `NPT`, `IST`, `NYC`, etc.) next to the time and date for crystal-clear clarity.
+- **Optimized for Battery & Stability:** Built with a resilient foreground service designed to stay reliably updated while consuming minimal battery.
+
+![Nepdate Status Bar Day Icon and Sticky Notification](/assets/img/posts/post_nepdate_notification.jpg)
+
+---
+
+## A Powerhouse of Vedic Astrology & Cultural Tools
+
+Nepdate goes far beyond a simple date converter. It packs a complete suite of astronomical and astrological tools:
+
+### 🌟 High-Precision Panchanga
+- Daily **Tithi, Nakshatra, Yoga, Karana, and Paksha** calculated with precision.
+- Accurate **Sunrise, Sunset, Moonrise, and Moonset** timings based on your exact geographical coordinates.
+- **Multi-Engine Astronomical Backend:** Computes planetary positions using modern high-precision NASA JPL ephemeris, analytical VSOP87/ELP2000 algorithms for multi-millennium date spans, and classical *Surya Siddhanta* methods.
+- **Flexible Ayanamsa Support:** Easily toggle between Lahiri (Chitrapaksha), Raman, KP, and Tropical systems.
+
+### 🔮 Kundali & Vedic Birth Chart
+- Generate detailed **Janma Patrika / Vedic Birth Charts** instantly with planetary degrees, house placements (Bhavas), and astrological aspects.
+- Compare chart variations across different calculation engines in real-time.
+
+### ✍️ Namakaran (Baby Naming by Nakshatra)
+- Find auspicious starting syllables (नामको पहिलो अक्षर) based on exact birth date, time, Nakshatra, and Pada (चरण).
+
+### 📅 Auspicious Saait & Muhurata
+- Comprehensive Muhurata finder for weddings (**विवाह**), sacred thread ceremonies (**ब्रतबन्ध**), housewarming (**गृहप्रवेश**), feeding ceremonies (**अन्नप्राशन / पास्नी**), and business inaugurations.
+
+### 🕉️ Sankalpa Generator & Vaidik Clock
+- **Sankalpa Mantra:** Automatically generates the correct Sanskrit Sankalpa text with localized astrological coordinates for rituals and pujas.
+- **Vaidik Clock:** Experience traditional timekeeping with dynamic divisions like Ghati, Pala, Vipala, and Muhurtas.
+
+### 🌑 Eclipse (Grahan) Information
+- View detailed solar (*Surya Grahan*) and lunar (*Chandra Grahan*) eclipse timings, visibility maps, and Sutak period details.
+
+---
+
+## Everyday Utility Tools
+
+In addition to calendar and astrology features, Nepdate includes essential tools for daily life:
+
+- **Bikram Sambat ⇄ Gregorian Date Converter:** Fast, two-way conversion supporting dates spanning thousands of years.
+- **Traditional Nepali Unit Converter:** Convert traditional land measurement units (*Ropani, Aana, Paisa, Daam, Bigha, Kattha, Dhur*), gold/weight units (*Tola, Lal*), and volume units.
+- **Nepali FM Radio Streaming:** Tune in to your favorite Nepali radio stations live with background playback and notification media controls.
+- **Printable Calendar:** Generate and export clean, printable monthly calendar layouts.
+- **100% Offline Capable:** All astronomical calculations and date tools function completely offline without requiring an active internet connection.
+- **Bilingual Interface:** Switch seamlessly between Nepali (नेपाली) and English at any time.
+
+---
+
+## Experience Nepdate Today
+
+Nepdate is built with love for the community to make Nepali date keeping and Vedic astrological calculations accurate, accessible, and beautiful.
+
+- **Download on Google Play Store:** [Nepdate on Google Play Store](https://play.google.com/store/apps/details?id=com.khumnath.nepdate)
+- **Web Version:** You can also explore the web edition anytime at [nepdate.khumnath.com.np](https://nepdate.khumnath.com.np/).
+- **Feedback & Suggestions:** If you have suggestions, feature requests, or find any bugs, feel free to reach out via email or GitHub.
+
+Thank you for your continuous encouragement and support!
+
+Happy date-keeping!

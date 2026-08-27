@@ -327,7 +327,20 @@ const PostDynamic = () => {
 
 
         <div className="markdown-body prose dark:prose-invert max-w-none" suppressHydrationWarning>
-          <ReactMarkdown rehypePlugins={[rehypeRaw]}>{post.content}</ReactMarkdown>
+          <ReactMarkdown
+            rehypePlugins={[rehypeRaw]}
+            components={{
+              img: ({ node, src, alt, ...props }) => {
+                let cleanSrc = src;
+                if (cleanSrc && cleanSrc.startsWith("../assets/")) {
+                  cleanSrc = cleanSrc.replace(/^\.\.\/assets\//, "/assets/");
+                }
+                return <img src={cleanSrc} alt={alt} {...props} className="rounded-xl shadow-md my-6 max-w-full h-auto mx-auto" />;
+              }
+            }}
+          >
+            {post.content}
+          </ReactMarkdown>
         </div>
 
       </article>
