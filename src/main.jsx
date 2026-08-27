@@ -12,27 +12,14 @@ import { SearchProvider } from './utils/SearchContext.jsx';
 
 
 
-const container = document.getElementById('root')
+const container = document.getElementById('root');
 
-if (container.childElementCount > 0) {
-  // SPA mode - use hydrateRoot for development, but with StrictMode
-  hydrateRoot(container,
-    <StrictMode>
-      <ConfigProvider>
-        <SearchProvider>
-          <App />
-        </SearchProvider>
-      </ConfigProvider>
-    </StrictMode>
-  )
-} else {
-  createRoot(container).render(
-    <StrictMode>
-      <ConfigProvider>
-        <SearchProvider>
-          <App />
-        </SearchProvider>
-      </ConfigProvider>
-    </StrictMode>
-  )
-}
+createRoot(container).render(
+  <StrictMode>
+    <ConfigProvider>
+      <SearchProvider>
+        <App />
+      </SearchProvider>
+    </ConfigProvider>
+  </StrictMode>
+);
