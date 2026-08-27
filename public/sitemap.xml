@@ -73,6 +73,30 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://khumnath.com.np/posts/en/2026-08-27-decoding-surya-siddhanta-mathematics-shlokas</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://khumnath.com.np/posts/en/2026-08-27-decoding-surya-siddhanta-mathematics-shlokas" />
+    <xhtml:link rel="alternate" hreflang="ne" href="https://khumnath.com.np/posts/ne/2026-08-27-decoding-surya-siddhanta-mathematics-shlokas" />
+    <image:image>
+      <image:loc>https://khumnath.com.np/assets/img/posts/solar-system.webp</image:loc>
+      <image:title>Decoding the Surya Siddhanta: Mathematical Proofs, Sanskrit Shlokas, and Zero-Lookup Ephemeris Engineering</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://khumnath.com.np/posts/ne/2026-08-27-decoding-surya-siddhanta-mathematics-shlokas</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://khumnath.com.np/posts/en/2026-08-27-decoding-surya-siddhanta-mathematics-shlokas" />
+    <xhtml:link rel="alternate" hreflang="ne" href="https://khumnath.com.np/posts/ne/2026-08-27-decoding-surya-siddhanta-mathematics-shlokas" />
+    <image:image>
+      <image:loc>https://khumnath.com.np/assets/img/posts/solar-system.webp</image:loc>
+      <image:title>सूर्यसिद्धान्तको गणितीय रहस्य: संस्कृत श्लोक, अहर्गण सूत्र र शून्य-लुकअप (Zero-Lookup) खगोल इन्जिनियरिङ</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://khumnath.com.np/posts/en/2026-08-27-vedic-astronomy-nepdate-engine-research</loc>
     <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
