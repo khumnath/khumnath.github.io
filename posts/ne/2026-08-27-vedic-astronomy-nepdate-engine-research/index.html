@@ -97,12 +97,12 @@
           'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
     })(window, document, 'script', 'dataLayer', 'GTM-PCHZT95M');</script>
   <!-- End Google Tag Manager -->
-  <script type="module" crossorigin src="/assets/index-CWMRkdHQ.js"></script>
-  <link rel="modulepreload" crossorigin href="/assets/vendor-CJRNzzU3.js">
-  <link rel="modulepreload" crossorigin href="/assets/react-vendor-BQ0HYxHH.js">
-  <link rel="modulepreload" crossorigin href="/assets/markdown-vendor-DpadjQ_j.js">
+  <script type="module" crossorigin src="/assets/index-e13MIORA.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/vendor-njX6VvQz.js">
+  <link rel="modulepreload" crossorigin href="/assets/react-vendor-BP_sCHcT.js">
+  <link rel="modulepreload" crossorigin href="/assets/markdown-vendor-CA9BE1_I.js">
   <link rel="stylesheet" crossorigin href="/assets/react-vendor-DammVlxs.css">
-  <link rel="stylesheet" crossorigin href="/assets/index-Dfsma7Vw.css">
+  <link rel="stylesheet" crossorigin href="/assets/index-DgXYKUmh.css">
 </head>
 
 <body>
@@ -131,28 +131,34 @@
 <li><strong>आधुनिक दृक पद्धति (Drigganita):</strong> आधुनिक वैज्ञानिक वेधशाला, न्युटोनियन तथा आपेक्षिकीय भौतिकशास्त्र, र NASA JPL / VSOP87 जस्ता उच्च सटिकताका गणितीय मोडेलमा आधारित।</li>
 </ol>
 <p>प्राचीन सिद्धान्तका अङ्कहरूमा समयको अन्तरालसँगै सूक्ष्म अन्तर जम्मा हुँदै जाँदा प्रत्यक्ष आकाशमा देखिने ग्रहस्थिति र गणितमा अन्तर आउँछ। यसलाई मिलाउन परम्परागत ज्योतिषीहरूले समय-समयमा <strong>बीज संस्कार (Bija Correction)</strong> थप्ने गर्छन्। तर बीज संस्कार केवल तत्कालीन अनुभवमा आधारित हुने भएकाले प्रत्येक वर्ष वा कालखण्डमा फेरि फेरि संशोधन गर्नुपर्ने हुन्छ। अर्कोतर्फ, आधुनिक दृक पद्धति पूर्ण वैज्ञानिक भए पनि शास्त्रीय धर्मशास्त्र (निर्णयसिन्धु, धर्मसिन्धु) का परम्परागत मान्यताहरूसँग नमिल्ने हुनाले नेपाली मूलधारका पञ्चाङ्गहरूमा अझै पूर्ण रूपमा स्वीकार भइसकेको छैन।</p>
-<p>यस अनुसन्धानमूलक लेखमा हामीले प्राचीन सिद्धान्त, बीज संस्कारको सीमा, आधुनिक दृक गणित र यी दुवैको सन्तुलन मिलाउन <strong>नेपडेट (Nepdate)</strong> मा निर्माण गरिएको <strong>हाइब्रिड इन्जिन (Hybrid Multi-Engine Architecture)</strong> को विस्तृत गणितीय तथा प्राविधिक विश्लेषण प्रस्तुत गरेका छौं।</p>
+<p>यस अनुसन्धानमूलक लेखमा हामीले प्राचीन सिद्धान्त, बीज संस्कारको सीमा, आधुनिक दृक गणित र यी दुवैको सन्तुलन मिलाउन <strong>नेपडेट (Nepdate)</strong> मा निर्माण गरिएको <strong>हाइब्रिड इन्जिन (Hybrid Multi-Engine Architecture)</strong> को विस्तृत गणितीय तथा प्राविधिक विश्लेषण प्रस्तुत गरेका छौं। <em>(द्रष्टव्य: नेपडेटको मूल C++ खगोलीय गणना इन्जिन GitHub मा <code>khumnath/nepdate</code> मार्फत खुला स्रोत (Open Source) को रूपमा उपलब्ध छ, जबकि यसको एन्ड्रोइड एप तथा वेब पोर्टल यसै इन्जिनमा आधारित सार्वजनिक सफ्टवेयर हुन्)।</em></p>
 <hr>
 <h2>१. पञ्चाङ्गका पाँच अङ्ग र आधारभूत गणित</h2>
 <p>पञ्चाङ्गका पाँच मुख्य अङ्गहरू निम्न खगोलीय सूत्रमा आधारित हुन्छन्:</p>
+<blockquote>
+<p><strong>पञ्चाङ्ग = { तिथि, वार, नक्षत्र, योग, करण }</strong></p>
+</blockquote>
 <ol>
-<li><strong>तिथि (Tithi):</strong> चन्द्रमा र सूर्यको कोणीय दूरी (Elongation) १२° ले बढेपछि एक तिथि बन्छ:
-$\text{तिथि} = \left\lfloor \frac{(\lambda_{\text{Moon}} - \lambda_{\text{Sun}}) \pmod{360^\circ}}{12^\circ} \right\rfloor + 1$</li>
+<li><strong>तिथि (Tithi):</strong> चन्द्रमा र सूर्यको कोणीय दूरी (Elongation) १२° ले बढेपछि एक तिथि बन्छ:<pre><code class="language-text">तिथि सङ्ख्या = floor( ((λ_चन्द्रमा - λ_सूर्य) mod 360°) / 12° ) + 1
+</code></pre>
+</li>
 <li><strong>वार (Vara):</strong> सूर्योदयदेखि अर्को सूर्योदयसम्मको अहोरात्र र होराक्रममा आधारित सात बार।</li>
-<li><strong>नक्षत्र (Nakshatra):</strong> चन्द्रमाको निरयण भोगांशलाई १३° २०’ (८०० कला) का २७ भागमा विभाजन:
-$\text{नक्षत्र} = \left\lfloor \frac{\lambda_{\text{Moon}} \pmod{360^\circ}}{13^\circ 20’} \right\rfloor + 1$</li>
-<li><strong>योग (Yoga):</strong> सूर्य र चन्द्रमाको भोगांशको जोडलाई १३° २०’ ले भाग गर्दा आउने २७ योगहरू:
-$\text{योग} = \left\lfloor \frac{(\lambda_{\text{Sun}} + \lambda_{\text{Moon}}) \pmod{360^\circ}}{13^\circ 20’} \right\rfloor + 1$</li>
+<li><strong>नक्षत्र (Nakshatra):</strong> चन्द्रमाको निरयण भोगांशलाई १३° २०’ (८०० कला) का २७ भागमा विभाजन:<pre><code class="language-text">नक्षत्र सङ्ख्या = floor( (λ_चन्द्रमा mod 360°) / 13°20' ) + 1
+</code></pre>
+</li>
+<li><strong>योग (Yoga):</strong> सूर्य र चन्द्रमाको भोगांशको जोडलाई १३° २०’ ले भाग गर्दा आउने २७ योगहरू:<pre><code class="language-text">योग सङ्ख्या = floor( ((λ_सूर्य + λ_चन्द्रमा) mod 360°) / 13°20' ) + 1
+</code></pre>
+</li>
 <li><strong>करण (Karana):</strong> एक तिथिको आधा भाग अर्थात् ६° को कोणीय अन्तर (कुल ६० करण)।</li>
 </ol>
 <hr>
 <h2>२. प्राचीन सिद्धान्त र महायुगको गणितीय संरचना</h2>
-<p>सूर्य सिद्धान्त अनुसार एक महायुगमा ४३,२०,००० वर्ष हुन्छन्। यस अवधिमा आकाशीय पिण्डहरूको भगण (Revolutions) सङ्ख्या निश्चित मानिएको छ:</p>
+<p>सूर्य सिद्धान्त अनुसार एक महायुगमा <strong>४३,२०,००० वर्ष</strong> हुन्छन्। यस अवधिमा आकाशीय पिण्डहरूको भगण (Revolutions) सङ्ख्या निश्चित मानिएको छ:</p>
 <table>
 <thead>
 <tr>
 <th style="text-align:left">आकाशीय पिण्ड</th>
-<th style="text-align:left">सूर्य सिद्धान्त अनुसार महायुग भगण ($R_i$)</th>
+<th style="text-align:left">सूर्य सिद्धान्त अनुसार महायुग भगण (R<sub>i</sub>)</th>
 </tr>
 </thead>
 <tbody>
@@ -173,21 +179,43 @@ $\text{योग} = \left\lfloor \frac{(\lambda_{\text{Sun}} + \lambda_{\text{Mo
 <td style="text-align:left">-२,३२,२३८</td>
 </tr>
 <tr>
+<td style="text-align:left"><strong>बुध शीघ्र (Mercury Sighra)</strong></td>
+<td style="text-align:left">१,७९,३७,०६०</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>शुक्र शीघ्र (Venus Sighra)</strong></td>
+<td style="text-align:left">७०,२२,३७६</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>मङ्गल (Mars)</strong></td>
+<td style="text-align:left">२२,९६,८३२</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>बृहस्पति (Jupiter)</strong></td>
+<td style="text-align:left">३,६४,२२०</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>शनि (Saturn)</strong></td>
+<td style="text-align:left">१,४६,५६८</td>
+</tr>
+<tr>
 <td style="text-align:left"><strong>सावन दिन (Civil Days in Yuga)</strong></td>
 <td style="text-align:left">१,५८,२२,३७,८२८</td>
 </tr>
 </tbody>
 </table>
-<p>कलियुग आरम्भ (१८ फेब्रुअरी ३१०२ ई.पू.) देखि बितेका दिनहरूलाई <strong>अहर्गण (Ahargana)</strong> भनिन्छ। अहर्गण $A$ बाट कुनै पनि ग्रहको मध्यम भोगांश ($\bar{\lambda}$) निकालिन्छ:</p>
-<p>$\bar{\lambda} = \left( \frac{A \times R_i}{D_{\text{Yuga}}} \times ३६०^\circ \right) \pmod{३६०^\circ}$</p>
+<p>कलियुग आरम्भ (१८ फेब्रुअरी ३१०२ ई.पू.) देखि बितेका दिनहरूलाई <strong>अहर्गण (Ahargana: A)</strong> भनिन्छ। अहर्गण <em>A</em> बाट कुनै पनि ग्रहको मध्यम भोगांश (λ̄) निकालिन्छ:</p>
+<pre><code class="language-text">मध्यम भोगांश (λ̄_i) = ( (A × R_i) / 1,582,237,828 × 360° ) mod 360°
+</code></pre>
 <p>त्यसपछि कक्षीय अण्डाकारता (Eccentricity) लाई सन्तुलन गर्न <strong>मन्द फल (Manda Phala)</strong> र दृष्टि भ्रमलाई मिलाउन <strong>शीघ्र फल (Sighra Phala)</strong> द्वारा स्पष्ट ग्रह निकालिन्छ।</p>
 <hr>
 <h2>३. समस्या: सैद्धान्तिक त्रुटि र ‘बीज’ को सीमा</h2>
 <h3>३.१ अन्तर किन आउँछ?</h3>
-<p>प्राचीन समयमा गुरुत्वाकर्षणका तीन-पिण्ड प्रभाव (Three-body perturbations), चन्द्रमाको कक्षीय विचलन र विषुवत्‌को अयनचलन (Precession) का जटिल सूक्ष्म परिवर्तनहरू ज्ञात थिएनन्। फलस्वरूप, दुई हजार वर्षपछि बिना कुनै संशोधनको सूर्य सिद्धान्तले गणना गर्दा चन्द्रमाको स्थितिमा २° देखि ४° सम्मको अन्तर र सङ्क्रान्ति समयमा केही घण्टाको फरक देखिन थाल्छ।</p>
+<p>प्राचीन समयमा गुरुत्वाकर्षणका बहु-पिण्ड प्रभाव (N-body perturbations), चन्द्रमाको कक्षीय विचलन र विषुवत्‌को अयनचलनका जटिल सूक्ष्म परिवर्तनहरू ज्ञात थिएनन्। फलस्वरूप, दुई हजार वर्षपछि बिना कुनै संशोधनको सूर्य सिद्धान्तले गणना गर्दा चन्द्रमाको स्थितिमा <strong>२° देखि ४°</strong> सम्मको अन्तर र सङ्क्रान्ति समयमा केही घण्टाको फरक देखिन थाल्छ।</p>
 <h3>३.२ बीज संस्कार (Bija Samskara)</h3>
 <p>यस त्रुटिलाई हटाउन परम्परागत पञ्चाङ्गकारहरूले भगण सङ्ख्यामा सानो जोड-घटाउ गर्ने पद्धति विकास गरे, जसलाई <strong>बीज</strong> भनिन्छ:</p>
-<p>$R_i’ = R_i + \Delta B_i$</p>
+<pre><code class="language-text">संशोधित भगण (R'_i) = R_i + ΔB_i
+</code></pre>
 <p><strong>बीजको मुख्य कमजोरी:</strong></p>
 <ul>
 <li>यो कुनै स्थायी वैज्ञानिक वा भौतिक नियम होइन, केवल अनुभवमा आधारित तदर्थ (Ad-hoc) जोड-घटाउ हो।</li>
@@ -233,7 +261,64 @@ $\text{योग} = \left\lfloor \frac{(\lambda_{\text{Sun}} + \lambda_{\text{Mo
 </ul>
 <p>नेपडेटले कुनै पनि वर्ष र स्थान (काठमाडौं, लन्डन, वा न्यूयोर्क) को लागि सूर्योदय-सूर्यास्तको वास्तविक समय निकालेर कालखण्डको गणितीय प्रतिच्छेदन (Intersection) गरी चाडपर्वको सही दिन आफैं निर्धारण गर्दछ।</p>
 <hr>
-<h2>६. निष्कर्ष</h2>
+<h2>६. तुलनात्मक सारांश (Comparative Synthesis)</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">मूल्याङ्कनको आधार</th>
+<th style="text-align:left">शुद्ध शास्त्रीय सूर्य सिद्धान्त</th>
+<th style="text-align:left">आधिकारिक नेपाली पञ्चाङ्ग</th>
+<th style="text-align:left">आधुनिक दृक प्रणाली</th>
+<th style="text-align:left">नेपडेट (Nepdate) हाइब्रिड पद्धति</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>ग्रह भोगांश शुद्धता</strong></td>
+<td style="text-align:left">± २.०° देखि ५.०° सम्म अन्तर</td>
+<td style="text-align:left">मध्यम (बीज संशोधन सहित)</td>
+<td style="text-align:left">अत्यन्त सटिक (≤ ०.०००१°)</td>
+<td style="text-align:left"><strong>अत्यन्त सटिक (Modern Engine)</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>तिथि समाप्त समय</strong></td>
+<td style="text-align:left">१ देखि ३ घण्टासम्म फरक</td>
+<td style="text-align:left">स्थानीय परम्परामा आधारित</td>
+<td style="text-align:left">चन्द्रमाको वास्तविक वेध अनुरूप</td>
+<td style="text-align:left"><strong>आधिकारिक मान्यतासँग अनुकूल</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>बीज माथिको निर्भरता</strong></td>
+<td style="text-align:left">छैन (असंशोधित)</td>
+<td style="text-align:left">भारी वार्षिक बीज संशोधन आवश्यक</td>
+<td style="text-align:left">आवश्यक छैन (भौतिक नियम)</td>
+<td style="text-align:left"><strong>कुनै तदर्थ वार्षिक बीज नचाहिने</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>चाडपर्व निर्णय</strong></td>
+<td style="text-align:left">पुस्तक हेरेर निर्णय</td>
+<td style="text-align:left">पण्डित सभाको निर्णय</td>
+<td style="text-align:left">प्रायः शास्त्राधार नहुने</td>
+<td style="text-align:left"><strong>शुद्ध स्वचालित शास्त्रीय व्याप्ति</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>हजारौं वर्षको गणना</strong></td>
+<td style="text-align:left">धेरै त्रुटिपूर्ण हुने</td>
+<td style="text-align:left">वर्तमान युग बाहिर नमिल्ने</td>
+<td style="text-align:left">± ५००० वर्षसम्म स्थिर</td>
+<td style="text-align:left"><strong>हजारौं वर्षसम्म स्थिर र भरपर्दो</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>इन्जिन छनोट</strong></td>
+<td style="text-align:left">स्थिर</td>
+<td style="text-align:left">स्थिर</td>
+<td style="text-align:left">स्थिर</td>
+<td style="text-align:left"><strong>प्रयोगकर्ता अनुसार परिवर्तनशील</strong></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>७. निष्कर्ष</h2>
 <p>नेपडेटले प्राचीन वैदिक खगोल परम्परालाई आधुनिक सफ्टवेयर इन्जिनियरिङसँग जोडेर एउटा खुला, पारदर्शी र वैज्ञानिक मानक स्थापित गरेको छ। परम्परागत मान्यताको सम्मान गर्दै आधुनिक खगोल विज्ञानको शुद्धतालाई एकै ठाउँमा समेट्नु नै नेपडेटको मूल विशेषता हो।</p>
 <hr>
 <h3>सन्दर्भ सामग्रीहरू</h3>
@@ -242,6 +327,7 @@ $\text{योग} = \left\lfloor \frac{(\lambda_{\text{Sun}} + \lambda_{\text{Mo
 <li><em>निर्णयसिन्धु</em>, कमलाकर भट्ट विरचित।</li>
 <li><em>धर्मसिन्धु</em>, काशीनाथ उपाध्याय।</li>
 <li>Meeus, Jean. <em>Astronomical Algorithms</em>, Willmann-Bell (1998).</li>
+<li>नेपडेट C++ गणना इन्जिन (Open Source): <a href="https://github.com/khumnath/nepdate">github.com/khumnath/nepdate</a></li>
 <li>नेपडेट आधिकारिक पोर्टल: <a href="https://nepdate.khumnath.com.np/">nepdate.khumnath.com.np</a></li>
 </ol>
 

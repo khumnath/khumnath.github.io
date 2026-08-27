@@ -97,12 +97,12 @@
           'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
     })(window, document, 'script', 'dataLayer', 'GTM-PCHZT95M');</script>
   <!-- End Google Tag Manager -->
-  <script type="module" crossorigin src="/assets/index-CWMRkdHQ.js"></script>
-  <link rel="modulepreload" crossorigin href="/assets/vendor-CJRNzzU3.js">
-  <link rel="modulepreload" crossorigin href="/assets/react-vendor-BQ0HYxHH.js">
-  <link rel="modulepreload" crossorigin href="/assets/markdown-vendor-DpadjQ_j.js">
+  <script type="module" crossorigin src="/assets/index-e13MIORA.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/vendor-njX6VvQz.js">
+  <link rel="modulepreload" crossorigin href="/assets/react-vendor-BP_sCHcT.js">
+  <link rel="modulepreload" crossorigin href="/assets/markdown-vendor-CA9BE1_I.js">
   <link rel="stylesheet" crossorigin href="/assets/react-vendor-DammVlxs.css">
-  <link rel="stylesheet" crossorigin href="/assets/index-Dfsma7Vw.css">
+  <link rel="stylesheet" crossorigin href="/assets/index-DgXYKUmh.css">
 </head>
 
 <body>
@@ -124,131 +124,143 @@
           </header>
           <div class="markdown-body">
             <h2>Abstract</h2>
-<p>For over two millennia, the Vedic <em>Panchanga</em> (the five-fold temporal framework comprising <em>Tithi</em>, <em>Vara</em>, <em>Nakshatra</em>, <em>Yoga</em>, and <em>Karana</em>) has governed civil, agrarian, and religious life across the Indian subcontinent and the Himalayan kingdom of Nepal. At the core of Panchanga computation lies celestial mechanics: the precise determination of the instantaneous geocentric positions of the Sun and Moon, along with the major planets (<em>Nava Grahas</em>).</p>
+<p>For over two millennia, the Vedic <em>Panchanga</em> (the five-fold temporal framework comprising <em>Tithi</em>, <em>Vara</em>, <em>Nakshatra</em>, <em>Yoga</em>, and <em>Karana</em>) has governed civil, agrarian, and religious life across the Indian subcontinent and the Himalayan region of Nepal. At the core of Panchanga computation lies celestial mechanics: the precise determination of the instantaneous geocentric positions of the Sun and Moon, along with the major planets (<em>Nava Grahas</em>).</p>
 <p>In contemporary timekeeping, a fundamental schism exists between traditional Siddhantic astronomy—governed by classical treatises such as the <em>Surya Siddhanta</em>, <em>Aryabhatiya</em>, and <em>Siddhanta Shiromani</em>—and modern observational astronomy (<em>Drik Ganita</em> / <em>Drigganita</em>), anchored in Newtonian gravitation, relativistic corrections, and high-precision ephemerides (e.g., NASA JPL DE-series, VSOP87, ELP-2000/82).</p>
 <p>While classical constants accumulate secular drift over centuries due to planetary perturbations and orbital precession, traditional panchang makers often compensate through ad-hoc, localized empirical adjustments termed <em>Bija</em> (<em>Bija Samskara</em>). Conversely, pure modern Drik systems, despite their scientific precision, struggle to gain full mainstream acceptance within religious orthodoxy because orthodox liturgical rules (<em>Dharmashastra</em>, <em>Nirnaya Sindhu</em>) are historically intertwined with Siddhantic definitions.</p>
-<p>This paper presents a rigorous comparative analysis of classical Siddhantic models, the mechanics and limitations of <em>Bija</em> corrections, and modern <em>Drik</em> ephemeris computation. Furthermore, it details the engineering philosophy and mathematical architecture of <strong>Nepdate</strong>, an open-source astronomical computation engine. Nepdate introduces a hybrid middle-ground architecture: providing <em>Surya Siddhanta</em> as its default baseline for canonical cultural event synchronization while integrating high-precision celestial algorithms for planetary motion, alongside dynamic, algorithmic festival resolution without hardcoded lookup tables.</p>
+<p>This paper presents a comparative analysis of classical Siddhantic models, the mechanics and limitations of <em>Bija</em> corrections, and modern <em>Drik</em> ephemeris computation. Furthermore, it details the engineering philosophy and mathematical architecture of <strong>Nepdate</strong> (whose core C++ calculation engine is open-source at <code>khumnath/nepdate</code>). Nepdate introduces a hybrid middle-ground architecture: providing <em>Surya Siddhanta</em> as its default baseline for canonical cultural event synchronization while integrating high-precision celestial algorithms for planetary motion, alongside dynamic, algorithmic festival resolution without hardcoded lookup tables.</p>
 <hr>
 <h2>1. Introduction: The Five Limbs of Time (<em>Panchanga</em>)</h2>
 <p>The word <em>Panchanga</em> (पञ्चाङ्ग) derives from the Sanskrit <em>Pancha</em> (five) and <em>Anga</em> (limb), representing the five fundamental temporal coordinates:</p>
-<p>$\text{Panchanga} = { \text{Tithi}, \text{Vara}, \text{Nakshatra}, \text{Yoga}, \text{Karana} }$</p>
+<blockquote>
+<p><strong>Panchanga Coordinates = { Tithi, Vara, Nakshatra, Yoga, Karana }</strong></p>
+</blockquote>
 <ol>
-<li><strong>Tithi (Lunar Day):</strong> The longitudinal separation between the Moon ($\lambda_{\text{Moon}}$) and the Sun ($\lambda_{\text{Sun}}$), measured in increments of $12^\circ$:
-$\text{Tithi Number} = \left\lfloor \frac{(\lambda_{\text{Moon}} - \lambda_{\text{Sun}}) \pmod{360^\circ}}{12^\circ} \right\rfloor + 1$</li>
-<li><strong>Vara (Solar Weekday):</strong> The seven planetary weekdays based on terrestrial rotation and the <em>Hora</em> sequence.</li>
-<li><strong>Nakshatra (Lunar Asterism):</strong> The sidereal longitude of the Moon partitioned into 27 equal segments of $13^\circ 20’$ ($800’$):
-$\text{Nakshatra Number} = \left\lfloor \frac{\lambda_{\text{Moon}} \pmod{360^\circ}}{13^\circ 20’} \right\rfloor + 1$</li>
-<li><strong>Yoga (Luni-Solar Angular Sum):</strong> The sum of the sidereal longitudes of the Sun and Moon, partitioned into 27 segments of $13^\circ 20’$:
-$\text{Yoga Number} = \left\lfloor \frac{(\lambda_{\text{Sun}} + \lambda_{\text{Moon}}) \pmod{360^\circ}}{13^\circ 20’} \right\rfloor + 1$</li>
-<li><strong>Karana (Half Lunar Day):</strong> Half of a Tithi ($6^\circ$ elongation).</li>
+<li><strong>Tithi (Lunar Day):</strong> The longitudinal angular separation between the Moon (λ<sub>Moon</sub>) and the Sun (λ<sub>Sun</sub>), measured in increments of 12°:<pre><code class="language-text">Tithi Number = floor( ((λ_Moon - λ_Sun) mod 360°) / 12° ) + 1
+</code></pre>
+</li>
+<li><strong>Vara (Solar Weekday):</strong> The seven planetary weekdays based on terrestrial rotation and the <em>Hora</em> sequence (Sunday through Saturday).</li>
+<li><strong>Nakshatra (Lunar Asterism):</strong> The sidereal longitude of the Moon partitioned into 27 equal segments of 13° 20’ (800 arcminutes):<pre><code class="language-text">Nakshatra Number = floor( (λ_Moon mod 360°) / 13°20' ) + 1
+</code></pre>
+</li>
+<li><strong>Yoga (Luni-Solar Angular Sum):</strong> The sum of the sidereal longitudes of the Sun and Moon, partitioned into 27 segments of 13° 20’:<pre><code class="language-text">Yoga Number = floor( ((λ_Sun + λ_Moon) mod 360°) / 13°20' ) + 1
+</code></pre>
+</li>
+<li><strong>Karana (Half Lunar Day):</strong> Half of a Tithi (6° elongation, producing 60 Karanas in a lunar month).</li>
 </ol>
-<p>The primary computational challenge is determining the instantaneous geocentric sidereal longitudes $\lambda_{\text{Sun}}(t)$ and $\lambda_{\text{Moon}}(t)$ for any epoch $t$.</p>
+<p>The primary computational challenge is determining the instantaneous geocentric sidereal longitudes <strong>λ<sub>Sun</sub>(t)</strong> and <strong>λ<sub>Moon</sub>(t)</strong> for any epoch <em>t</em>.</p>
 <hr>
 <h2>2. Classical Siddhantic Astronomy: Mathematical Foundations</h2>
 <p>The classical Siddhantic tradition models celestial motion via mean motions over cosmic epochs (<em>Mahayugas</em>) supplemented by epicyclic equations of center (<em>Manda</em> and <em>Sighra Samskara</em>).</p>
 <h3>2.1 The Mahayuga Model and Ahargana</h3>
-<p>A <em>Mahayuga</em> (or <em>Chaturyuga</em>) consists of $4,320,000$ solar years. According to the <em>Surya Siddhanta</em>, celestial bodies complete an integral number of revolutions in this period:</p>
+<p>A <em>Mahayuga</em> (or <em>Chaturyuga</em>) consists of <strong>4,320,000 solar years</strong>. According to the canonical <em>Surya Siddhanta</em>, celestial bodies complete an integral number of revolutions in this period:</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:left">Celestial Parameter</th>
-<th style="text-align:left">Surya Siddhanta Revolutions per Mahayuga ($R_i$)</th>
+<th style="text-align:left">Celestial Body / Parameter</th>
+<th style="text-align:left">Surya Siddhanta Revolutions per Mahayuga (R<sub>i</sub>)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left"><strong>Solar Revolutions (Sun)</strong></td>
-<td style="text-align:left">$4,320,000$</td>
+<td style="text-align:left">4,320,000</td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>Lunar Revolutions (Moon)</strong></td>
-<td style="text-align:left">$57,753,336$</td>
+<td style="text-align:left">57,753,336</td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>Lunar Apogee (Mandoccha)</strong></td>
-<td style="text-align:left">$488,203$</td>
+<td style="text-align:left">488,203</td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>Lunar Ascending Node (Rahu)</strong></td>
-<td style="text-align:left">$-232,238$</td>
+<td style="text-align:left">-232,238</td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>Mercury (Budha - Sighra)</strong></td>
-<td style="text-align:left">$17,937,060$</td>
+<td style="text-align:left">17,937,060</td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>Venus (Shukra - Sighra)</strong></td>
-<td style="text-align:left">$7,022,376$</td>
+<td style="text-align:left">7,022,376</td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>Mars (Mangala)</strong></td>
-<td style="text-align:left">$2,296,832$</td>
+<td style="text-align:left">2,296,832</td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>Jupiter (Guru)</strong></td>
-<td style="text-align:left">$364,220$</td>
+<td style="text-align:left">364,220</td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>Saturn (Shani)</strong></td>
-<td style="text-align:left">$146,568$</td>
+<td style="text-align:left">146,568</td>
 </tr>
 <tr>
-<td style="text-align:left"><strong>Civil Days (Savana Dina)</strong></td>
-<td style="text-align:left">$1,582,237,828$</td>
+<td style="text-align:left"><strong>Civil Days in Yuga (Savana Dina)</strong></td>
+<td style="text-align:left">1,582,237,828</td>
 </tr>
 </tbody>
 </table>
-<p>Given the count of elapsed mean solar days from the epoch of Kaliyuga (February 18, 3102 BCE Julian), termed <strong>Ahargana</strong> ($A$), the mean longitude ($\bar{\lambda}_i$) of any celestial body is given by:</p>
-<p>$\bar{\lambda}<em>i = \left( \frac{A \times R_i}{D</em>{\text{Yuga}}} \times 360^\circ \right) \pmod{360^\circ}$</p>
-<p>where $D_{\text{Yuga}} = 1,582,237,828$ days.</p>
-<pre><code>       [Kaliyuga Epoch] 
-              │
-              ▼ (Ahargana Days elapsed)
-      ┌───────────────┐
-      │ Mean Position │  $\bar{\lambda} = \frac{A \cdot R_i}{D_{\text{Yuga}}} \cdot 360^\circ$
-      └───────┬───────┘
-              │
-        Manda Samskara (Equation of Center)
-              │
-              ▼
-      ┌───────────────┐
-      │ True Position │  $\lambda = \bar{\lambda} \pm \mu$
-      └───────────────┘
+<p>Given the count of elapsed mean solar days from the epoch of Kaliyuga (midnight of February 18, 3102 BCE Julian), termed <strong>Ahargana</strong> (<em>A</em>), the mean longitude (λ̄<sub>i</sub>) of any celestial body is computed by:</p>
+<pre><code class="language-text">Mean Longitude (λ̄_i) = ( (A × R_i) / 1,582,237,828 × 360° ) mod 360°
+</code></pre>
+<pre><code>       [Kaliyuga Epoch (3102 BCE)] 
+                   │
+                   ▼ (Ahargana Days Elapsed: A)
+      ┌─────────────────────────┐
+      │  Mean Longitude (λ̄_i)   │ = (A × R_i / D_Yuga) × 360°
+      └────────────┬────────────┘
+                   │
+         Manda Samskara (Equation of Center)
+                   │
+                   ▼
+      ┌─────────────────────────┐
+      │  True Longitude (λ_i)   │ = λ̄_i ± Manda Correction (μ)
+      └─────────────────────────┘
 </code></pre>
 <h3>2.2 Epicyclic Equations of Center (<em>Manda</em> and <em>Sighra</em>)</h3>
 <p>To account for orbital eccentricity (first anomaly) and heliocentric perspective (second anomaly), Siddhantas employ double epicycles:</p>
 <ul>
-<li><strong>Manda Phala:</strong> The equation of the center arising from the eccentricity of the orbit.</li>
-<li><strong>Sighra Phala:</strong> The planetary parallax/heliocentric elongation correction.</li>
+<li><strong>Manda Phala:</strong> The equation of the center arising from the elliptical eccentricity of the orbit.</li>
+<li><strong>Sighra Phala:</strong> The planetary parallax and heliocentric elongation correction.</li>
 </ul>
-<p>The Manda correction $\mu$ is formulated through epicycle circumferences ($C_m$):</p>
-<p>$\sin(\mu) = \frac{C_m}{360^\circ} \sin(\bar{\lambda} - \lambda_{\text{apogee}})$</p>
-<p>$\lambda_{\text{true}} = \bar{\lambda} - \mu$</p>
+<p>The Manda correction (μ) is formulated through epicycle circumferences (<em>C<sub>m</sub></em>):</p>
+<pre><code class="language-text">sin(μ) = (C_m / 360°) × sin(λ̄ - λ_apogee)
+λ_true = λ̄ - μ
+</code></pre>
 <hr>
 <h2>3. The Astronomical Dilemma: Siddhanta vs. Drik &amp; The Role of Bija</h2>
 <h3>3.1 The Accumulation of Secular Error</h3>
 <p>While the <em>Surya Siddhanta</em> and related texts were computational masterworks of antiquity, their constants were formulated without knowledge of:</p>
 <ol>
-<li><strong>Gravitational Perturbations:</strong> Three-body and N-body perturbations (e.g., the Great Inequality of Jupiter and Saturn, Earth-Moon-Sun tidal friction).</li>
-<li><strong>Secular Variations:</strong> Gradual shifts in orbital eccentricities, inclinations, and perihelion longitudes.</li>
-<li><strong>Non-Uniform Precession of the Equinoxes:</strong> Precession rates oscillate and shift non-linearly over millennia.</li>
+<li><strong>Gravitational Perturbations:</strong> Complex multi-body gravitational interactions (e.g., the Great Inequality between Jupiter and Saturn, Earth-Moon tidal deceleration).</li>
+<li><strong>Secular Variations:</strong> Gradual shifts in orbital eccentricities, axial tilts, and perihelion longitudes over millennia.</li>
+<li><strong>Non-Uniform Precession:</strong> Precession rates oscillate and shift non-linearly over thousands of years.</li>
 </ol>
-<p>Over two millennia, these minute differences accumulate into substantial discrepancies. By the 21st century:</p>
+<p>Over two millennia, these minute differences accumulate into substantial discrepancies. By the modern era:</p>
 <ul>
-<li>The mean motion of the Moon in uncorrected <em>Surya Siddhanta</em> diverges by over $2^\circ$ to $4^\circ$ from true observation.</li>
-<li>The lunar apogee and nodal longitudes show notable phase errors.</li>
-<li>Solar ingress into zodiac signs (<em>Sankranti</em>) can differ by several hours, occasionally shifting a Sankranti from night to day or across midnight boundaries.</li>
+<li>The mean motion of the Moon in uncorrected <em>Surya Siddhanta</em> diverges by over <strong>2° to 4°</strong> from true observation.</li>
+<li>The lunar apogee and nodal longitudes show notable phase shifts.</li>
+<li>Solar ingress into zodiac signs (<em>Sankranti</em>) can differ by several hours, occasionally shifting a Sankranti from night to day or across date boundaries.</li>
 </ul>
 <h3>3.2 The Traditional Patch: <em>Bija Samskara</em></h3>
 <p>Recognizing this divergence centuries ago, astronomers like Bhaskara II (<em>Siddhanta Shiromani</em>), Nilakantha Somayaji (<em>Tantrasangraha</em>), and subsequent regional pandits introduced <strong>Bija</strong> (बीज—additive or multiplicative empirical corrections).</p>
 <p>A Bija correction alters the revolution count:</p>
-<p>$R_i’ = R_i + \Delta B_i$</p>
+<pre><code class="language-text">Corrected Revolutions (R'_i) = R_i + ΔB_i
+</code></pre>
 <p>For example, classical texts list Bija adjustments such as:</p>
-<p>$\Delta B_{\text{Mercury}} = +60, \quad \Delta B_{\text{Mars}} = +8, \quad \Delta B_{\text{Saturn}} = +4, \quad \Delta B_{\text{Rahu}} = -12$</p>
+<ul>
+<li><strong>Mercury:</strong> ΔB = +60</li>
+<li><strong>Mars:</strong> ΔB = +8</li>
+<li><strong>Saturn:</strong> ΔB = +4</li>
+<li><strong>Rahu:</strong> ΔB = -12</li>
+</ul>
 <h4>The Critical Limitation of Bija</h4>
 <ul>
-<li><strong>Ad-Hoc Nature:</strong> Bija is not an intrinsic physical model; it is a linear empirical offset calibrated to a specific century.</li>
-<li><strong>Perpetual Maintenance Required:</strong> Because true orbital mechanics are non-linear, a Bija that yields accurate eclipses in 1600 CE becomes inaccurate by 2000 CE.</li>
+<li><strong>Ad-Hoc Nature:</strong> Bija is not an intrinsic physical model; it is a linear empirical offset calibrated to a specific era.</li>
+<li><strong>Perpetual Maintenance Required:</strong> Because true celestial mechanics are non-linear, a Bija that yields accurate eclipses in 1600 CE becomes inaccurate by 2000 CE.</li>
 <li><strong>Regional Fragmentation:</strong> Different regional Panchanga committees in Nepal and India adopt distinct Bija values, leading to contradictory Tithi timings and festival dates across competing traditional almanacs.</li>
 </ul>
 <pre><code>+-------------------------------------------------------------------------+
@@ -264,13 +276,15 @@ $\text{Yoga Number} = \left\lfloor \frac{(\lambda_{\text{Sun}} + \lambda_{\text{
 +------------------------------------+------------------------------------+
 </code></pre>
 <h3>3.3 The Modern <em>Drik</em> System (<em>Drigganita</em>)</h3>
-<p>Modern <em>Drik</em> astronomy calculates true apparent geocentric positions using rigorous numerical integrations of Newtonian and relativistic equations of motion:</p>
-<p>$\lambda_{\text{Sayana}} = f(\text{VSOP87}, \text{ELP2000}, \text{JPL DE-series}) + \Delta\psi_{\text{nutation}} - \kappa_{\text{aberration}}$</p>
-<p>$\lambda_{\text{Nirayana}} = \lambda_{\text{Sayana}} - \text{Ayanamsa}_{\text{Lahiri/Chitra}}$</p>
+<p>Modern <em>Drik</em> astronomy calculates true apparent geocentric positions using numerical integrations of Newtonian and relativistic equations of motion:</p>
+<pre><code class="language-text">λ_Sayana = f(VSOP87, ELP2000, JPL DE) + Δψ_nutation - κ_aberration
+λ_Nirayana = λ_Sayana - Ayanamsa_Lahiri
+</code></pre>
 <p>Despite its undisputed physical accuracy, Drik has encountered resistance among orthodox institutions because liturgical works (<em>Dharmasindhu</em>, <em>Nirnayasindhu</em>) specifically reference Siddhantic parameters for sacramental validity.</p>
 <hr>
 <h2>4. The Nepdate Architecture: A Balanced Middle Ground</h2>
 <p>To resolve the tension between classical fidelity and observational precision, <strong>Nepdate</strong> was designed from the ground up with a modular, multi-engine architecture.</p>
+<p><em>(Note: Nepdate’s core astronomical computation engine originated as an open-source C++ library available at <code>github.com/khumnath/nepdate</code>, while its modern multi-platform Android app and Web portal are consumer platforms powered by this architecture).</em></p>
 <pre><code>                             ┌───────────────────────┐
                              │    Nepdate Client     │
                              │ (Web / Android / QML) │
@@ -348,14 +362,15 @@ $\text{Yoga Number} = \left\lfloor \frac{(\lambda_{\text{Sun}} + \lambda_{\text{
 </code></pre>
 <h3>5.1 The <em>Vyapti</em> (Temporal Overlap) Principle</h3>
 <p>In Vedic liturgical jurisprudence (<em>Nirnaya Sindhu</em>), a festival is rarely assigned simply to whatever Tithi is active at sunrise. Instead, it requires the Tithi to be active during a specific division of the natural day (<em>Dina Mana</em>):</p>
-<p>$\text{Day Span} = T_{\text{Sunset}} - T_{\text{Sunrise}}$</p>
+<pre><code class="language-text">Day Span = Time(Sunset) - Time(Sunrise)
+</code></pre>
 <p>The day is partitioned into five canonical <em>Kalas</em>:</p>
 <ol>
-<li><strong>Pratah (Morning):</strong> $0 \le t &lt; \frac{1}{5} \times \text{Day Span}$</li>
-<li><strong>Sangava (Forenoon):</strong> $\frac{1}{5} \le t &lt; \frac{2}{5} \times \text{Day Span}$</li>
-<li><strong>Madhyahna (Midday):</strong> $\frac{2}{5} \le t &lt; \frac{3}{5} \times \text{Day Span}$ (e.g., <em>Ganesh Chaturthi</em>, <em>Ram Navami</em>)</li>
-<li><strong>Aparahna (Afternoon):</strong> $\frac{3}{5} \le t &lt; \frac{4}{5} \times \text{Day Span}$ (e.g., <em>Pitru Paksha / Shraddha</em>, <em>Maha Navami</em>)</li>
-<li><strong>Sayahna (Late Afternoon):</strong> $\frac{4}{5} \le t \le \text{Day Span}$</li>
+<li><strong>Pratah (Morning):</strong> 0 to 1/5 of Day Span</li>
+<li><strong>Sangava (Forenoon):</strong> 1/5 to 2/5 of Day Span</li>
+<li><strong>Madhyahna (Midday):</strong> 2/5 to 3/5 of Day Span (e.g., <em>Ganesh Chaturthi</em>, <em>Ram Navami</em>)</li>
+<li><strong>Aparahna (Afternoon):</strong> 3/5 to 4/5 of Day Span (e.g., <em>Pitru Paksha / Shraddha</em>, <em>Maha Navami</em>)</li>
+<li><strong>Sayahna (Late Afternoon):</strong> 4/5 to 5/5 of Day Span</li>
 </ol>
 <p>Similarly, nocturnal festivals rely on specific night divisions:</p>
 <ul>
@@ -363,21 +378,22 @@ $\text{Yoga Number} = \left\lfloor \frac{(\lambda_{\text{Sun}} + \lambda_{\text{
 <li><strong>Nishita Kala:</strong> The precise middle 2 <em>Ghatis</em> of midnight (e.g., <em>Krishna Janmashtami</em>, <em>Maha Shivaratri Lingodbhava</em>).</li>
 </ul>
 <h3>5.2 Algorithmic Implementation Example</h3>
-<p>When evaluating whether <strong>Maha Shivaratri</strong> falls on date $D$ or $D+1$:</p>
+<p>When evaluating whether <strong>Maha Shivaratri</strong> falls on date <em>D</em> or <em>D+1</em>:</p>
 <ol>
-<li>Nepdate calculates the exact start and end moments of <em>Magha Krishna Chaturdashi</em> ($T_{\text{start}}, T_{\text{end}}$).</li>
-<li>It computes the <em>Nishita Kala</em> window $[N_1, N_2]$ for night $D$ and night $D+1$.</li>
-<li>It performs an intersection test:
-$\text{Overlap}(D) = [T_{\text{start}}, T_{\text{end}}] \cap [N_{1,D}, N_{2,D}]$</li>
+<li>Nepdate calculates the exact start and end moments of <em>Magha Krishna Chaturdashi</em> (T<sub>start</sub>, T<sub>end</sub>).</li>
+<li>It computes the <em>Nishita Kala</em> window [N<sub>1</sub>, N<sub>2</sub>] for night <em>D</em> and night <em>D+1</em>.</li>
+<li>It performs an intersection test:<pre><code class="language-text">Overlap(D) = [T_start, T_end] ∩ [N_1, N_2]
+</code></pre>
+</li>
 <li>The festival is algorithmically awarded to the calendar date exhibiting the authentic canonical overlap.</li>
 </ol>
-<p>This mathematical approach guarantees that festivals are accurately localized anywhere on Earth, whether calculated for Kathmandu ($+05:45$), London ($+00:00$), or New York ($-05:00$).</p>
+<p>This mathematical approach guarantees that festivals are accurately localized anywhere on Earth, whether calculated for Kathmandu (+05:45), London (+00:00), or New York (-05:00).</p>
 <hr>
 <h2>6. Comparative Synthesis</h2>
 <table>
 <thead>
 <tr>
-<th style="text-align:left">Evaluation Vector</th>
+<th style="text-align:left">Evaluation Dimension</th>
 <th style="text-align:left">Pure Classical Surya Siddhanta</th>
 <th style="text-align:left">Official Nepali Panchangas</th>
 <th style="text-align:left">Modern Drik Systems</th>
@@ -387,45 +403,45 @@ $\text{Overlap}(D) = [T_{\text{start}}, T_{\text{end}}] \cap [N_{1,D}, N_{2,D}]$
 <tbody>
 <tr>
 <td style="text-align:left"><strong>Planetary Precision</strong></td>
-<td style="text-align:left">$\pm 2.0^\circ - 5.0^\circ$ error</td>
+<td style="text-align:left">± 2.0° to 5.0° error</td>
 <td style="text-align:left">Moderate (Corrected via Bija)</td>
-<td style="text-align:left">Exact ($\le 0.0001^\circ$)</td>
-<td style="text-align:left">Exact (Modern Engine)</td>
+<td style="text-align:left">Exact (≤ 0.0001°)</td>
+<td style="text-align:left"><strong>Exact (Modern Engine)</strong></td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>Tithi End Times</strong></td>
 <td style="text-align:left">Diverges by 1–3 hours</td>
 <td style="text-align:left">Calibrated to regional norms</td>
 <td style="text-align:left">Exact to true lunar phase</td>
-<td style="text-align:left">Synchronized with Official Baseline</td>
+<td style="text-align:left"><strong>Synchronized with Official Baseline</strong></td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>Bija Dependency</strong></td>
 <td style="text-align:left">None (Raw Classical)</td>
 <td style="text-align:left">Heavy annual empirical tuning</td>
 <td style="text-align:left">None (Physics-based)</td>
-<td style="text-align:left">Zero arbitrary annual Bija</td>
+<td style="text-align:left"><strong>Zero arbitrary annual Bija</strong></td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>Event Resolution</strong></td>
 <td style="text-align:left">Manual text lookup</td>
 <td style="text-align:left">Manual pandit deliberation</td>
 <td style="text-align:left">Often lacks Shastric rules</td>
-<td style="text-align:left">Pure dynamic algorithmic Vyapti</td>
+<td style="text-align:left"><strong>Pure dynamic algorithmic Vyapti</strong></td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>Millennial Extrapolation</strong></td>
 <td style="text-align:left">Significant degradation</td>
 <td style="text-align:left">Fails outside current era</td>
-<td style="text-align:left">Stable for $\pm 5000$ years</td>
-<td style="text-align:left">Stable &amp; robust across millennia</td>
+<td style="text-align:left">Stable for ± 5000 years</td>
+<td style="text-align:left"><strong>Stable &amp; robust across millennia</strong></td>
 </tr>
 <tr>
-<td style="text-align:left"><strong>Configurability</strong></td>
+<td style="text-align:left"><strong>Engine Configurability</strong></td>
 <td style="text-align:left">Fixed</td>
 <td style="text-align:left">Fixed</td>
 <td style="text-align:left">Fixed</td>
-<td style="text-align:left">Multi-Engine User Switchable</td>
+<td style="text-align:left"><strong>Multi-Engine User Switchable</strong></td>
 </tr>
 </tbody>
 </table>
@@ -440,7 +456,8 @@ $\text{Overlap}(D) = [T_{\text{start}}, T_{\text{end}}] \cap [N_{1,D}, N_{2,D}]$
 <li><em>Indian Astronomy: An Introduction</em>, S. Balachandra Rao, Universities Press (2000).</li>
 <li>Meeus, Jean. <em>Astronomical Algorithms</em>, Willmann-Bell, 2nd Edition (1998).</li>
 <li><em>Nirnaya Sindhu</em> of Kamalakara Bhatta, Chowkhamba Sanskrit Series.</li>
-<li>Nepdate Open Source Project Repository &amp; Documentation: <a href="https://nepdate.khumnath.com.np/">nepdate.khumnath.com.np</a></li>
+<li>Nepdate C++ Calculation Engine (Open Source): <a href="https://github.com/khumnath/nepdate">github.com/khumnath/nepdate</a></li>
+<li>Nepdate Official Portal: <a href="https://nepdate.khumnath.com.np/">nepdate.khumnath.com.np</a></li>
 </ol>
 
           </div>
