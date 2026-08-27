@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate, Link, useLocation } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import Layout from "../components/Layout";
 import { getPostBySlug, getPostByPairId } from "../utils/loadPosts";
@@ -328,6 +329,7 @@ const PostDynamic = () => {
 
         <div className="markdown-body prose dark:prose-invert max-w-none" suppressHydrationWarning>
           <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
             rehypePlugins={[rehypeRaw]}
             components={{
               img: ({ node, src, alt, ...props }) => {
