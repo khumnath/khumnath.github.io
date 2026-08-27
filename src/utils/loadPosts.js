@@ -23,6 +23,17 @@ function getLangFromPath(path) {
   return 'en';
 }
 
+export function normalizePostImage(img) {
+  if (!img) return '/assets/img/home/home-heading.jpg';
+  let src = String(img).trim();
+  if (src.startsWith('http://') || src.startsWith('https://')) return src;
+  if (src.startsWith(':')) return `/assets/img/posts/${src.substring(1)}`;
+  if (src.startsWith('../assets/')) return src.replace(/^\.\.\/assets\//, '/assets/');
+  if (src.startsWith('assets/')) return `/${src}`;
+  if (src.startsWith('/')) return src;
+  return `/assets/img/posts/${src}`;
+}
+
 export async function getAllPosts() {
   const posts = [];
   for (const path in allPostFiles) {
@@ -34,9 +45,12 @@ export async function getAllPosts() {
 
     const slug = path.split("/").pop().replace(/\.(md|markdown)$/, "");
     const lang = getLangFromPath(path);
+    const normalizedImg = normalizePostImage(data.img || data.image);
 
     const normalizedData = {
       ...data,
+      img: normalizedImg,
+      image: normalizedImg,
       date: data.date instanceof Date ? data.date.toISOString() : data.date,
       categories: Array.isArray(data.categories) ? data.categories : (data.category ? [data.category] : []),
       tags: Array.isArray(data.tags) ? data.tags : (data.tags ? [data.tags] : []),
@@ -75,7 +89,8 @@ export async function getPostBySlug(slug, preferredLang) {
   if (data.published === false) return null;
 
   const lang = getLangFromPath(file);
-  return { ...data, content, slug, lang };
+  const normalizedImg = normalizePostImage(data.img || data.image);
+  return { ...data, img: normalizedImg, image: normalizedImg, content, slug, lang };
 }
 
 export async function getPostByPairId(pairId, targetLang) {
@@ -90,7 +105,8 @@ export async function getPostByPairId(pairId, targetLang) {
 
     if (data.lng_pair === pairId) {
       const slug = path.split("/").pop().replace(/\.(md|markdown)$/, "");
-      return { ...data, content, slug, lang: fileLang };
+      const normalizedImg = normalizePostImage(data.img || data.image);
+      return { ...data, img: normalizedImg, image: normalizedImg, content, slug, lang: fileLang };
     }
   }
   return null;

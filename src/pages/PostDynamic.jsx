@@ -271,7 +271,7 @@ const PostDynamic = () => {
 
             {/* Title Icon */}
             <img
-              src={post.img ? (post.img.startsWith(':') ? `/assets/img/posts/${post.img.substring(1)}` : post.img) : '/assets/img/home/home-heading.jpg'}
+              src={post.img || '/assets/img/home/home-heading.jpg'}
               alt={post.title}
               className="w-16 h-16 md:w-20 md:h-20 object-cover rounded-xl shadow-sm bg-white dark:bg-[#333] p-1 border border-gray-100 dark:border-gray-700"
             />
@@ -332,8 +332,14 @@ const PostDynamic = () => {
             components={{
               img: ({ node, src, alt, ...props }) => {
                 let cleanSrc = src;
-                if (cleanSrc && cleanSrc.startsWith("../assets/")) {
-                  cleanSrc = cleanSrc.replace(/^\.\.\/assets\//, "/assets/");
+                if (cleanSrc) {
+                  if (cleanSrc.startsWith("../assets/")) {
+                    cleanSrc = cleanSrc.replace(/^\.\.\/assets\//, "/assets/");
+                  } else if (cleanSrc.startsWith("assets/")) {
+                    cleanSrc = `/${cleanSrc}`;
+                  } else if (!cleanSrc.startsWith("/") && !cleanSrc.startsWith("http")) {
+                    cleanSrc = `/assets/img/posts/${cleanSrc}`;
+                  }
                 }
                 return <img src={cleanSrc} alt={alt} {...props} className="rounded-xl shadow-md my-6 max-w-full h-auto mx-auto" />;
               }

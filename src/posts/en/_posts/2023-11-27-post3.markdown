@@ -17,7 +17,7 @@ As the developer of Lekhika, I am currently working on enhancing its accuracy an
 - **Comprehensive Dictionary**: I have equipped Lekhika with a vast dictionary of Nepali words and phrases, ensuring accurate and consistent input.
 
 - **Integration with Fcitx5**: Lekhika is not a standalone application; it is a table addon for Fcitx5. This means it's an extension that adds Nepali input capabilities to the Fcitx5 framework, allowing users to easily switch between Lekhika and other input methods.
-![](../assets/img/posts/post_screenshot.png)  
+![](/assets/img/posts/post_screenshot.png)  
 ## Installation
 # Clone the repository
 git clone https://github.com/khumnath/fcitx5-table-lekhika.git

@@ -49,7 +49,7 @@ A good desktop app should feel like it’s yours. The new Bikram Calendar now in
 
 Here's a look at the new interface, showcasing its clean design and the detailed Panchanga information panel.
 
-![Bikram Calendar application showing the monthly view and detailed Panchanga information for a selected day.](../assets/img/posts/post_calendar2.png) 
+![Bikram Calendar application showing the monthly view and detailed Panchanga information for a selected day.](/assets/img/posts/post_calendar2.png) 
 
 ## For the Tech Enthusiasts: Build It Yourself!
 
