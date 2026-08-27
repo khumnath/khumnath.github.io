@@ -19,7 +19,7 @@ I'm excited to share a project that I've been working on: **NepDate**, a Nepali 
 
 On top of that, most of the good options seemed to be for Windows only, leaving my Linux friends out in the cold. So, I decided to take matters into my own hands and build NepDate! After getting it working perfectly on Linux, I even made a Windows version so everyone could join the party.
 
-![](../assets/img/posts/post_calendar.png)  
+![](/assets/img/posts/post_calendar.png)  
 
 
 #### What's in it for you?
