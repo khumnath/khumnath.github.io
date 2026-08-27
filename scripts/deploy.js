@@ -4,7 +4,12 @@ import path from 'node:path';
 
 function run(cmd, options = {}) {
   console.log(`\n> ${cmd}`);
-  return execSync(cmd, { stdio: 'inherit', ...options });
+  const env = {
+    ...process.env,
+    SSH_AUTH_SOCK: process.env.SSH_AUTH_SOCK || '/run/user/1000/keyring/ssh',
+    ...options.env,
+  };
+  return execSync(cmd, { stdio: 'inherit', ...options, env });
 }
 
 function deploy() {
