@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-27T09:30:00.000Z",
+  "updated_at": "2026-08-29T04:22:00.000Z",
   "app": "AstraLedger POS",
   "version": "1.2.0",
   "vendor": "Aksharlab Studio",
@@ -53,6 +53,14 @@
       "registered_to": "Master Administrator (Primary Workstation)",
       "status": "active",
       "activated_at": "2026-08-27T09:30:00.000Z"
+    },
+    "ASTRA-C786-0FB0-DE83": {
+      "type": "lifetime",
+      "prefix": "LT",
+      "plan": "Single Terminal Lifetime",
+      "registered_to": "Licensed Terminal",
+      "status": "active",
+      "activated_at": "2026-08-29T04:22:00.000Z"
     }
   }
 }
